@@ -15,8 +15,8 @@ export class CreateProductDto {
   @Transform(({ value }) => value.toString().toLowerCase())
   @IsString()
   @IsNotEmpty()
-  @MaxLength(50)
-  @Matches(/^[A-Za-z0-9 ,]*$/, {
+  @MaxLength(80)
+  @Matches(/^[A-Za-z0-9 áéíóúÁÉÍÓÚ,\.¡!-]*$/, {
     message:
       'El nombre solo puede contener solo letras, números, comas y espacios',
   })
@@ -25,7 +25,7 @@ export class CreateProductDto {
   @IsString()
   @IsNotEmpty()
   @MaxLength(250)
-  @Matches(/^[A-Za-z0-9 ,]+$/, {
+  @Matches(/^[A-Za-z0-9 áéíóúÁÉÍÓÚ,\.()¿?¡!-]+$/, {
     message:
       'Descripcion del producto debe contener solo letras, números, comas y espacios',
   })
@@ -36,12 +36,20 @@ export class CreateProductDto {
   @IsPositive()
   price: number;
 
-  @Type(() => Boolean)
+  @Transform(({ value }) => {
+    if (typeof value === 'string') {
+      return value.toLowerCase() === 'true';
+    }
+    if (typeof value === 'string') {
+      return value.toLowerCase() === 'false';
+    }
+    return value;
+  })
   @IsOptional()
   @IsBoolean()
   state: boolean;
 
-  @IsNotEmpty()
+  @IsOptional()
   @Transform(({ value }) => value.toString().toLowerCase())
   @IsString()
   @MaxLength(50)
