@@ -21,11 +21,14 @@ jobs:
         with:
           node-version: '18.x'
 
+      - name: Install nest
+        run: npm install -g @nestjs/cli
+
       - name: Install dependencies
-        run: |
-        npm install -g @nestjs/cli
-        npm install
-        npm run build
+        run: npm install
+
+      - name: Build project
+        run: npm run build
 
   deploy:
     runs-on: ubuntu-latest
