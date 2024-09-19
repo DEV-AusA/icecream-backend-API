@@ -37,6 +37,10 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
 
+    permissions:
+      id-token: write  # Agrega esta línea para dar permisos al id-token
+      contents: read
+
     steps:
       - name: Download build artifact
         uses: actions/download-artifact@v4
