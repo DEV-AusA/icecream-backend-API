@@ -49,11 +49,6 @@ jobs:
           tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_EF4203243D9D46EDBB25DCC6B639DBCA }}
           subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_0EC5295FECA94EF895990CD9F8E3C90F }}
 
-      # Agregamos este paso opcional para eliminar los archivos antiguos
-      - name: Clean up old files in Azure Web App
-        run: |
-          curl -X POST "https://${{ secrets.AZURE_WEBAPP_URL }}/api/clean" # Si has habilitado un endpoint o puedes usar Kudu
-
       - name: 'Deploy to Azure Web App'
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v3
