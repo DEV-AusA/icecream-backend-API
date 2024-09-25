@@ -134,6 +134,11 @@ export class SeedService implements OnModuleInit {
         lastName: process.env.LAST_NAME_ADMIN2,
         email: process.env.EMAIL_ADMIN2,
       },
+      {
+        name: process.env.NAME_ADMIN3,
+        lastName: process.env.LAST_NAME_ADMIN3,
+        email: process.env.EMAIL_ADMIN3,
+      },
     ];
     for (const admin of adminUsers) {
       const userAdmin = await this.userRepository.findOne({

@@ -27,7 +27,8 @@ export class UserService {
     const userEmail = emailAddresses[0].emailAddress;
     if (
       userEmail !== process.env.EMAIL_ADMIN &&
-      userEmail !== process.env.EMAIL_ADMIN2
+      userEmail !== process.env.EMAIL_ADMIN2 &&
+      userEmail !== process.env.EMAIL_ADMIN3
     ) {
       throw new UnauthorizedException(
         'No tienes permisos para ingresar al sitio',
