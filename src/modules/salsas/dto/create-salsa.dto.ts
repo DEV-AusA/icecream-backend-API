@@ -7,7 +7,7 @@ export class CreateSalsaDto {
     @IsNotEmpty()
     @IsString()
     @MaxLength(50)
-    @Matches(/^[A-Za-z0-9 ,]+$/, {
+    @Matches(/^[A-Za-zÀ-ÿ0-9 ,\/!-.]+$/, {
       message: 'El nombre de la salsa solo debe contener letras, números, comas o espacios',
     })
     name: string;

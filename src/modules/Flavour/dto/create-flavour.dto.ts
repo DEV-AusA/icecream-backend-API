@@ -6,9 +6,9 @@ export class CreateFlavourDto {
   @IsNotEmpty()
   @IsString()
   @MaxLength(50)
-  @Matches(/^[A-Za-z0-9 ,]+$/, {
-    message: 'Sabor debe contener solo letras, números, comas y espacios',
-  })
+  @Matches(/^[A-Za-zÀ-ÿ0-9 ,\/!-.]+$/, {
+    message: 'Sabor debe contener solo letras (incluyendo tildes), números, comas, espacios, /, !, - y .',
+  })  
   name: string;
 
   @Type(() => Boolean)

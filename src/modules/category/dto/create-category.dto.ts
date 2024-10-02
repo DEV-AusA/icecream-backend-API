@@ -6,7 +6,7 @@ export class CreateCategoryDto {
   @IsNotEmpty()
   @IsString()
   @MaxLength(50)
-  @Matches(/^[A-Za-z0-9 ,]+$/, {
+  @Matches(/^[A-Za-zÀ-ÿ0-9 ,\/!-.]+$/, {
     message: 'Categoria debe contener solo letras, números, comas y espacios',
   })
   name: string;

@@ -16,18 +16,16 @@ export class CreateProductDto {
   @IsString()
   @IsNotEmpty()
   @MaxLength(80)
-  @Matches(/^[A-Za-z0-9 áéíóúÁÉÍÓÚ,\.¡!-]*$/, {
-    message:
-      'El nombre solo puede contener solo letras, números, comas y espacios',
+  @Matches(/^[A-Za-zÀ-ÿ0-9 ,\/!-.]+$/, {
+    message: 'El nombre solo debe contener solo letras (incluyendo tildes), números, comas, espacios, /, !, - y .',
   })
   name: string;
 
   @IsString()
   @IsNotEmpty()
   @MaxLength(250)
-  @Matches(/^[A-Za-z0-9 áéíóúÁÉÍÓÚ,\.()¿?¡!-]+$/, {
-    message:
-      'Descripcion del producto debe contener solo letras, números, comas y espacios',
+  @Matches(/^[A-Za-zÀ-ÿ0-9 ,\/!-.]+$/, {
+    message: 'La descripcion del producto solo debe contener solo letras (incluyendo tildes), números, comas, espacios, /, !, - y .',
   })
   description: string;
 
